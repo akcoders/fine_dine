@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title><?= lang('Errors.badRequest') ?></title>
+    <?php
+    $badRequest = lang('Errors.badRequest');
+    $sorryBadRequest = lang('Errors.sorryBadRequest');
+    $badRequest = $badRequest === 'Errors.badRequest' ? '400 - Bad Request' : $badRequest;
+    $sorryBadRequest = $sorryBadRequest === 'Errors.sorryBadRequest' ? 'Sorry, your request could not be understood or processed.' : $sorryBadRequest;
+    ?>
+    <title><?= esc($badRequest) ?></title>
 
     <style>
         div.logo {
@@ -76,7 +82,7 @@
         <?php if (ENVIRONMENT !== 'production') : ?>
             <?= nl2br(esc($message)) ?>
         <?php else : ?>
-            <?= lang('Errors.sorryBadRequest') ?>
+            <?= esc($sorryBadRequest) ?>
         <?php endif; ?>
     </p>
 </div>

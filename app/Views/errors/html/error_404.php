@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title><?= lang('Errors.pageNotFound') ?></title>
+    <?php
+    $pageNotFound = lang('Errors.pageNotFound');
+    $sorryCannotFind = lang('Errors.sorryCannotFind');
+    $pageNotFound = $pageNotFound === 'Errors.pageNotFound' ? '404 - Page Not Found' : $pageNotFound;
+    $sorryCannotFind = $sorryCannotFind === 'Errors.sorryCannotFind' ? 'Sorry, we cannot find the page you were looking for.' : $sorryCannotFind;
+    ?>
+    <title><?= esc($pageNotFound) ?></title>
 
     <style>
         div.logo {
@@ -76,7 +82,7 @@
             <?php if (ENVIRONMENT !== 'production') : ?>
                 <?= nl2br(esc($message)) ?>
             <?php else : ?>
-                <?= lang('Errors.sorryCannotFind') ?>
+                <?= esc($sorryCannotFind) ?>
             <?php endif; ?>
         </p>
     </div>
