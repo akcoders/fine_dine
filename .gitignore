@@ -12,6 +12,9 @@ writable/uploads/*
 
 # Local environment overrides
 .env
+env
+app/Config/App.php
+app/Config/Database.php
 
 # Local archives and OS/editor files
 ignore.zip
